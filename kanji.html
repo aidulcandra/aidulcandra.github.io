@@ -3,7 +3,8 @@
   <body>
     <p id="my_element">Initial Text</p>
     <script>
-      document.getElementById('my_element').textContent = "Hello World"
+      const query = window.location.href
+      document.getElementById('my_element').textContent = "Search bar url: " + query
     </script>
   </body>
 </html>
