@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
   <body>
-    <p id="my_element">Initial Text</p>
+    <p id="url"></p>
+    <p id="queries"></p>
     <script>
-      const query = window.location.href
-      document.getElementById('my_element').textContent = "Search bar url: " + query
+      const url = window.location.href
+      const queries = new URLSearchParams(window.location.search)
+      const kanji = queries.get('kanji')
+      document.getElementById('url').textContent = "Search Kanji: " + kanji
     </script>
   </body>
 </html>
