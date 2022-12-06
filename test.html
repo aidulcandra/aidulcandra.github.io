@@ -7,9 +7,9 @@
  
 <body>
   <script>
-      fetch('/test.txt')
+      fetch('https://github.com/aidulcandra/materi-bahasa-asing/raw/main/en/files/a-dan-an.txt')
        .then(r=>r.text())
-       .then(t=>document.body.innerHTML = "<h1>Response:\n" + t + "</h1>")
+       .then(t=>document.body.innerHTML = "<h1>Response:<br><p>" + t + "</p></h1>")
   </script>
 </body>
  
