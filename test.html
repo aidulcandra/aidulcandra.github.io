@@ -7,8 +7,9 @@
  
 <body>
   <script>
-      const data = await fetch('https://idubot.aidulcandra.repl.co').then(r=r.text())
-      document.body.innerHTML = "<h1>Idubot Response:\n" + data + "</h1>"
+      fetch('https://idubot.aidulcandra.repl.co')
+       .then(r=r.text())
+       .then(t=>document.body.innerHTML = "<h1>Idubot Response:\n" + t + "</h1>")
   </script>
 </body>
  
