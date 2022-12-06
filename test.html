@@ -7,7 +7,7 @@
  
 <body>
   <script>
-      fetch('https://github.com/aidulcandra/materi-bahasa-asing/raw/main/en/files/a-dan-an.txt')
+      fetch('https://raw.githubusercontent.com/aidulcandra/materi-bahasa-asing/master/en/files/a-dan-an.txt')
        .then(r=>r.text())
        .then(t=>document.body.innerHTML = "<h1>Response:<br><p>" + t + "</p></h1>")
   </script>
