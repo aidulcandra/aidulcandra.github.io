@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	
-	<body onscroll="updateScrollPosition()">
+	<body>
 		<img src="assets/img1.jpg" width=100% style="border-radius:200px;margin-left:auto;margin-right:auto;display:block">
 		<div class="legend" style="text-align:center;font-size:10px">Art by: @kamekokchan</div>
 		<h1 style="text-align:center">Welcome!</h1>
@@ -17,12 +17,5 @@
 			<tr><td><img height=30px src="assets/fb.png"></td><td>Muhammad Aidul Candra</td></tr>
 			<tr><td><img height=30px src="assets/ig.png"></td><td>@idulcandra</td></tr>
 		</table>
-		
-		<script>
-			function updateScrollPosition() {
-				const scrollPos = window.pageYOffset
-				document.querySelector('img').style.width = (100-scrollPos/2)+'%'
-			}
-		</script>
 	</body>
 </html>
