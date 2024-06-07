@@ -6,8 +6,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 </head>
 <body>
-  <iframe width="511" height="390" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=F8E3B722345031B3%213943&authkey=%21AL5Ik7SuXeg7wqM&em=2&wdAllowInteractivity=False&ActiveCell='Ready'!F3&Item='Ready'!F3%3AI20&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+  <p id="text">Test Text</p>
+  <script>
+    const socket = io("https://rg.aidulcandra.serv00.net");
+    socket.on("edit-text", newText => {
+      document.getElementById("text").innerText = newText
+    })
+  </script>
 </body>
 </html>
