@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="401.27023"
+   height="77.552551"
+   viewBox="0 0 106.16942 20.519113"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <g
+       id="g10">
+      <path
+         style="fill:#7d8eff;fill-opacity:1;stroke-width:0.0486707"
+         d="M 6.9034546,9.0252889 0.10593669,9.7611613 A 8.4666672,8.4666662 0 0 0 8.4666667,16.933333 8.4666672,8.4666662 0 0 0 14.104049,14.772225 L 9.3472331,9.8769165 A 1.6640348,1.6640346 0 0 1 8.4666667,10.130648 1.6640348,1.6640346 0 0 1 6.9034546,9.0252889 Z"
+         id="path10" />
+      <path
+         style="fill:#ffd656;fill-opacity:1;stroke-width:0.0486707"
+         d="M 16.896643,7.6935872 10.120312,8.6082601 A 1.6640348,1.6640346 0 0 1 9.886735,9.3291463 l 4.760433,4.8999597 a 8.4666672,8.4666662 0 0 0 2.286165,-5.7624393 8.4666672,8.4666662 0 0 0 -0.03669,-0.7730795 z"
+         id="path9" />
+      <path
+         style="fill:#73b551;fill-opacity:1;stroke-width:0.0486707"
+         d="M 2.7796753,2.2107178 A 8.4666672,8.4666662 0 0 0 0,8.4666667 8.4666672,8.4666662 0 0 0 0.0377238,8.9953166 L 6.8176717,8.2615112 a 1.6640348,1.6640346 0 0 1 0.333313,-0.8077026 z"
+         id="path8" />
+      <path
+         style="fill:#c76c6c;fill-opacity:1;stroke-width:0.0486707"
+         d="M 8.4666667,0 A 8.4666672,8.4666662 0 0 0 3.3775716,1.7270264 L 7.7473307,6.9680501 A 1.6640348,1.6640346 0 0 1 8.4666667,6.8026855 1.6640348,1.6640346 0 0 1 10.010758,7.847583 L 16.791223,6.9323934 A 8.4666672,8.4666662 0 0 0 8.4666667,0 Z"
+         id="path1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:16.8233px;fill:#cecece;fill-opacity:1;stroke-width:0.525728"
+       x="17.684595"
+       y="17.003042"
+       id="text10"><tspan
+         id="tspan10"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.8233px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Bold';fill:#cecece;fill-opacity:1;stroke-width:0.525728"
+         x="17.684595"
+         y="17.003042">OSB</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.8233px;fill:#cecece;fill-opacity:1;stroke-width:0.525728"
+       x="49.104763"
+       y="17.003042"
+       id="text10-2"><tspan
+         id="tspan10-4"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.8233px;font-family:'Myriad Pro';-inkscape-font-specification:'Myriad Pro Italic';fill:#cecece;fill-opacity:1;stroke-width:0.525728"
+         x="49.104763"
+         y="17.003042">Tracking</tspan></text>
+  </g>
+</svg>
