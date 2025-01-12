@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Twibbon K3 Generator</title>
+
+		<link rel="icon" href="img/logo.svg" sizes="any" type="image/svg+xml">
+    
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/popper.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="twibbon/croppie.js"></script>
+		<link rel="stylesheet" href="twibbon/croppie.css">
+		<script>
+			
+		$(document).ready(function(){
+		var twibbonurl="/twibbon/twibbon.png";;
+		// Initialized Croppie
+		var croppie_div = $("#image").croppie({
+		viewport: {
+		width: 300,
+		height: 300,
+		boundary: { width: 300, height: 300 }
+		}
+		});
+		// Sets the image from the url # Doesnt Work
+		
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				croppie_div.croppie('bind', {
+					url: e.target.result
+				});
+				}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#fileinput").change(function() {
+			readURL(this);
+		});
+		$('.generatetwibbon').on('click', function(e) {
+			croppie_div.croppie('result',{
+				type:'base64',
+				format:'jpeg',
+				size:{width:500,height:500}
+			}).then(function(resp){
+				var canvas= document.getElementById('canvas');
+				var context= canvas.getContext("2d");
+				var image = new Image();
+				image.src=resp;
+				image.onload=function(){
+					context.drawImage(image,0,0,canvas.width,canvas.height);
+					var image2 = new Image();
+					image2.src=twibbonurl;
+
+					var maxwidth=500;
+					var maxheight=500;
+					var ratio=0;
+					var width=image2.width;
+					var height=image2.height;
+					if(width>maxwidth){
+						ratio=maxwidth/width;
+						height=height*ratio;
+						width=width*ratio;
+						//console.log("kondisi1");
+
+					}
+					else if(width<maxwidth){
+						ratio=maxwidth/width;
+						height=height*ratio;
+						width=width*ratio;
+						//console.log("kondisi3");
+					}
+					else if(height<maxheight){
+						ratio=maxheight/height;
+						height=height*ratio;
+						width=width*ratio;
+						//console.log("kondisi4");
+					}
+					if(height>maxheight){
+						ratio=maxheight/height;
+						height=height*ratio;
+						width=width*ratio;
+						//console.log("kondisi2");
+					}
+					
+
+					image2.onload=function(){
+						context.drawImage(image2,0,0,width,height);
+						var canvas= document.getElementById('canvas');
+						var imagepreview = document.getElementById('imagepreview');
+						imagepreview.src=canvas.toDataURL("image/png");
+						
+					}
+				}
+			});
+
+		});
+		$('.downloadimage').on('click', function(e) {
+			var canvas= document.getElementById('canvas');
+			var link = document.createElement('a');
+			link.download = "Twibbon Result.png";
+			link.href = canvas.toDataURL("image/png");
+			link.click();
+		});
+		$("#filetwibbon").change(function() {
+			if (this.files && this.files[0]) {
+			var reader2 = new FileReader();
+			reader2.onload = function(e) {
+				twibbonurl=e.target.result;
+				$('.overlay')[0].style.backgroundImage="url("+e.target.result+")";
+				}
+			reader2.readAsDataURL(this.files[0]);
+			}
+		});
+		});
+		</script>
+		<style>
+			#twibbon{
+				background-repeat:no-repeat;background-size:cover;background-image: url(twibbon/placeholder-user.png);width: 300px !important;height: 300px !important;position: relative;margin:0 auto;
+			}
+			.overlay {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin:0px;
+			height: 100%;
+			width: 100%;
+			z-index: 2;
+			background-image:url(twibbon/twibbon.png);
+			background-repeat:no-repeat;
+			background-size: contain;
+			background-position: top left;
+			pointer-events: none
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<br/>
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="card">
+						<div class="card-body">
+							<div id="twibbon">
+								<div class="overlay"></div>
+								<div id="image"></div>
+							</div>
+							<br/><br/>
+							
+							<div class="text-center">
+								
+								<input id="fileinput" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" />
+								
+								<label for="fileinput" class="btn btn-primary" style="margin:0"><span class="fa fa-upload"></span> Upload Gambar</label>
+								<button class="generatetwibbon btn btn-primary" data-toggle="modal" data-target="#modal"><span class="fa fa-gear"></span> Buat</button><br/><br/>
+								<input id="filetwibbon" type="file" accept="image/png" style="display: none" /><label for="filetwibbon" class="btn btn-primary" style="margin:0"><span class="fa fa-upload"></span> Ganti Frame</label><br/><br/>
+								
+
+							</div>
+							<br/><br/>
+							<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content">
+										<div class="modal-body text-center">
+											<canvas id="canvas" width="500" height="500" style="display:none;">
+											</canvas>
+											<img src="#" id="imagepreview" class="img-fluid" alt="Twibbon Result sabrisangjaya"/>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-success downloadimage" ><span class="fa fa-download"></span> Download</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-close"></span> Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="form-group">	
+								<label for="name">Caption</label>
+								<textarea name="caption" id="caption" class="form-control" rows="5">
+Make your twibbon at sabrisangjaya.github.io/twibbon.html #sabrisangjaya #twibbon #webdev
+</textarea>
+							</div>
+							<button id="tooltipcopy" data-toggle="tooltip" data-placement="right" class="btn btn-sm btn-secondary" style="margin-bottom: 5px;"><span class="fa fa-copy"></span> copy to clipboard</button>
+
+<script>
+	$(document).ready(function(){
+	$("#caption").click(function(){
+		this.select();
+		document.execCommand("copy");
+	});
+	$("#tooltipcopy").tooltip({trigger:'click',delay:{"show":500,"hide":200}});
+	$("#tooltipcopy").click(function(){
+		$("#caption").select();
+		document.execCommand("copy");
+		$("#tooltipcopy").attr('data-original-title','copied!').tooltip('show');
+	});
+	$("#tooltipcopy").mouseout(function(){
+		$("#tooltipcopy").tooltip('hide');
+	});
+
+	});
+</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
