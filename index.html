@@ -1,11 +1,121 @@
 <!DOCTYPE html>
-<hmtl>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aidul Candra's Page</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: monospace;
+            margin-left: 30px;
+        }
+        
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #card-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .lang-card {
+            position: absolute;
+            background: black;
+            border: 2px solid white;
+            border-radius: 5px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            margin: -10px;
+        }
+        
+        .lang-card.top {
+            transform: rotate(0deg) translate(-5px, 5px);
+            animation: cardGoTop 0.2s;
+            z-index: 2;
+        }
+        
+        .lang-card.bottom {
+            transform: rotate(180deg) translate(-5px, 5px) rotate(-180deg);
+            animation: cardGoBottom 0.2s;
+            z-index: 1;
+        }
+        
+        @keyframes cardGoBottom {
+            from {
+                transform: rotate(0deg) translate(-5px, 5px);
+            }
+            
+            to {
+                transform: rotate(180deg) translate(-5px, 5px) rotate(-180deg);
+            }
+        }
+        
+        @keyframes cardGoTop {
+            from {
+                transform: rotate(-180deg) translate(-5px, 5px) rotate(180deg);
+            }
+            
+            to {
+                transform: rotate(0deg) translate(-5px, 5px);
+            }
+        }
+    </style>
   </head>
   <body>
-    <p>Hello.</p>
+    <div id="header">
+        <h1>Aidul Candra's Page</h1>
+        <div id="card-container">
+            <div class="lang-card top en">EN</div>
+            <div class="lang-card bottom id">ID</div>
+        </div>
+    </div>
+    <p><i>Assalamualaikum Warahmatullahi Wabarakatuh</i></p>
+    <p id="test"></p>
+    <h2>Check Out My Stuff:</h2>
+    <p id="test2"></p>
+    <script>
+        loadText("en")
+        const enCard = document.querySelector(".lang-card.en")
+        const idCard = document.querySelector(".lang-card.id")
+        enCard.onclick = swapLangCards
+        idCard.onclick = swapLangCards
+        function swapLangCards() {
+            enCard.classList.toggle("top")
+            enCard.classList.toggle("bottom")
+            idCard.classList.toggle("top")
+            idCard.classList.toggle("bottom")
+            if (enCard.classList.contains("top")) {
+                loadText("en")
+            }
+            else {
+                loadText("id")
+            }
+        }
+        function loadText(lang) {
+            const text = {
+                en: {
+                    test: "My name is Aidul. Nice to meet you. This page is under construction so please be patience. 🍕",
+                    test2: "Some stuff will go here"
+                },
+                id: {
+                    test: "Namaku Aidul. Salam kenal. Halaman ini belum selesai jadi mohon bersabar. 🍕",
+                    test2: "Nanti ada di sini"
+                }
+            }
+            for (const id in text[lang]) {
+                document.querySelector("#"+id).textContent = text[lang][id]
+            }
+        }
+    </script>
   </body>
-</hmtl>
+</html>
